@@ -1,0 +1,10 @@
+{
+  "name": "হিসাব — ব্যক্তিগত অর্থ ব্যবস্থাপনা",
+  "short_name": "হিসাব",
+  "description": "ব্যক্তিগত আয়-ব্যয়ের হিসাব রাখুন",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f7f5",
+  "theme_color": "#14532d",
+  "lang": "bn"
+}
