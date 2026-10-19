@@ -1,58 +1,19 @@
 <!doctype html>
 <html lang="bn">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#14532d">
-  <meta name="description" content="ব্যক্তিগত আয়-ব্যয়ের হিসাব রাখুন">
-  <title>হিসাব — ব্যক্তিগত অর্থ ব্যবস্থাপনা</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14532d"><meta name="description" content="ব্যক্তিগত আয়-ব্যয়ের হিসাব রাখুন">
+  <title>HisabSaathi — আপনার টাকার সহজ হিসাব</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand-mark">হি</div>
-    <div><div class="brand-name">হিসাব</div><div class="brand-sub">আপনার টাকার সহজ হিসাব</div></div>
-    <span id="connection" class="status"><i></i> অফলাইন-প্রস্তুত</span>
-  </header>
-  <main class="container">
-    <section class="welcome">
-      <div><p class="eyebrow">আপনার ড্যাশবোর্ড</p><h1>হিসাব থাকুক <span>পরিষ্কার।</span></h1><p class="muted">আয়, খরচ ও সঞ্চয়—সব এক জায়গায়।</p></div>
-      <button id="addTop" class="primary">＋ নতুন হিসাব</button>
-    </section>
-    <section class="summary-grid">
-      <article class="balance-card">
-        <div class="card-label light">বর্তমান ব্যালেন্স</div>
-        <div id="balance" class="balance-value">৳ ০.০০</div>
-        <div class="balance-note">আপনার মোট আয় থেকে মোট খরচ বাদ দিয়ে</div>
-        <div class="balance-decoration">৳</div>
-      </article>
-      <article class="metric-card"><div class="metric-icon income-icon">↙</div><div class="card-label">মোট আয়</div><div id="income" class="metric-value">৳ ০.০০</div><div class="metric-note">সব আয়ের হিসাব</div></article>
-      <article class="metric-card"><div class="metric-icon expense-icon">↗</div><div class="card-label">মোট খরচ</div><div id="expense" class="metric-value">৳ ০.০০</div><div class="metric-note">সব খরচের হিসাব</div></article>
-    </section>
-    <section class="content-grid">
-      <article class="panel">
-        <div class="panel-heading"><div><h2>লেনদেনের তালিকা</h2><p class="muted">আপনার সাম্প্রতিক আয় ও খরচ</p></div><button id="exportBtn" class="secondary">ডেটা রপ্তানি</button></div>
-        <div class="filters"><input id="search" type="search" placeholder="লেনদেন খুঁজুন..." aria-label="লেনদেন খুঁজুন"><select id="filter" aria-label="লেনদেনের ধরন"><option value="all">সব লেনদেন</option><option value="income">শুধু আয়</option><option value="expense">শুধু খরচ</option></select></div>
-        <div id="transactions" class="transactions"><div class="empty"><div class="empty-icon">৳</div><strong>এখনও কোনো হিসাব নেই</strong><p>প্রথম আয় বা খরচটি যোগ করুন।</p></div></div>
-      </article>
-      <aside class="panel quick-panel">
-        <h2>দ্রুত হিসাব যোগ করুন</h2><p class="muted">মাত্র কয়েকটি তথ্য দিলেই হবে।</p>
-        <form id="transactionForm">
-          <div class="type-toggle"><button type="button" class="type-btn active" data-type="expense">খরচ</button><button type="button" class="type-btn" data-type="income">আয়</button></div>
-          <input id="title" required maxlength="80" placeholder="কিসের হিসাব? যেমন: বাজার" aria-label="হিসাবের নাম">
-          <div class="field-row"><label>পরিমাণ (৳)<input id="amount" required type="number" min="0.01" step="0.01" placeholder="0.00"></label><label>তারিখ<input id="date" required type="date"></label></div>
-          <label>বিভাগ<select id="category"><option>খাবার</option><option>যাতায়াত</option><option>বেতন</option><option>বাড়ি</option><option>পড়াশোনা</option><option>বিল</option><option>স্বাস্থ্য</option><option>বিনোদন</option><option>অন্যান্য</option></select></label>
-          <label>নোট (ঐচ্ছিক)<textarea id="note" rows="2" maxlength="240" placeholder="অতিরিক্ত কিছু লিখুন..."></textarea></label>
-          <button class="primary full" type="submit">＋ হিসাব সংরক্ষণ করুন</button>
-          <p class="privacy-note">🔒 এই প্রাথমিক সংস্করণে তথ্য এই ডিভাইসের ব্রাউজারেই থাকে।</p>
-        </form>
-      </aside>
-    </section>
-    <section class="bottom-tools"><div><h2>আপনার ডেটা, আপনার নিয়ন্ত্রণে</h2><p class="muted">ব্যাকআপ ফাইল ডাউনলোড করে নিজের কাছে রাখতে পারবেন।</p></div><button id="backupBtn" class="secondary">↓ ব্যাকআপ ডাউনলোড</button><button id="clearBtn" class="danger-ghost">সব হিসাব মুছুন</button></section>
-    <footer>হিসাব · ব্যক্তিগত অর্থ ব্যবস্থাপনা <span>প্রাথমিক সংস্করণ · লোকাল সংরক্ষণ</span></footer>
-  </main>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
-</body>
-</html>
+<header class="topbar"><div class="brand-mark">হি</div><div><div class="brand-name">HisabSaathi</div><div class="brand-sub">আপনার টাকার সহজ হিসাব</div></div><span id="connection" class="status"><i></i> সংযোগ পরীক্ষা হচ্ছে</span></header>
+<main class="container">
+<section class="welcome"><div><p class="eyebrow">আপনার ড্যাশবোর্ড</p><h1>হিসাব থাকুক <span>পরিষ্কার।</span></h1><p class="muted">আয়, খরচ ও সঞ্চয়—সব এক জায়গায়।</p></div><button id="addTop" class="primary">＋ নতুন হিসাব</button></section>
+<section id="authPanel" class="panel auth-panel"><div><h2>আপনার অ্যাকাউন্ট</h2><p class="muted">নিজের হিসাব নিরাপদে সংরক্ষণ করতে লগইন করুন।</p></div><form id="authForm"><label>ইমেইল<input id="authEmail" type="email" required autocomplete="email" placeholder="name@example.com"></label><label>পাসওয়ার্ড<input id="authPassword" type="password" required minlength="6" autocomplete="current-password" placeholder="কমপক্ষে ৬ অক্ষর"></label><div class="auth-actions"><button class="primary" id="loginBtn" type="submit">লগইন</button><button class="secondary" id="registerBtn" type="button">নতুন অ্যাকাউন্ট</button><button class="text-button" id="resetBtn" type="button">পাসওয়ার্ড ভুলে গেছেন?</button></div></form><p id="authMessage" class="form-message" aria-live="polite">ক্লাউড সিঙ্ক চালু করতে ইমেইল দিয়ে লগইন বা অ্যাকাউন্ট তৈরি করুন।</p></section>
+<section id="userBar" class="user-bar hidden"><span>লগইন: <strong id="userEmail"></strong></span><button id="logoutBtn" class="secondary">লগআউট</button></section>
+<section class="summary-grid"><article class="balance-card"><div class="card-label light">বর্তমান ব্যালেন্স</div><div id="balance" class="balance-value">৳ ০.০০</div><div class="balance-note">মোট আয় থেকে মোট খরচ বাদ দিয়ে</div><div class="balance-decoration">৳</div></article><article class="metric-card"><div class="metric-icon income-icon">↙</div><div class="card-label">মোট আয়</div><div id="income" class="metric-value">৳ ০.০০</div><div class="metric-note">সব আয়ের হিসাব</div></article><article class="metric-card"><div class="metric-icon expense-icon">↗</div><div class="card-label">মোট খরচ</div><div id="expense" class="metric-value">৳ ০.০০</div><div class="metric-note">সব খরচের হিসাব</div></article></section>
+<section class="content-grid"><article class="panel"><div class="panel-heading"><div><h2>লেনদেনের তালিকা</h2><p class="muted">আপনার সাম্প্রতিক আয় ও খরচ</p></div><button id="exportBtn" class="secondary">ডেটা রপ্তানি</button></div><div class="filters"><input id="search" type="search" placeholder="লেনদেন খুঁজুন..." aria-label="লেনদেন খুঁজুন"><select id="filter" aria-label="লেনদেনের ধরন"><option value="all">সব লেনদেন</option><option value="income">শুধু আয়</option><option value="expense">শুধু খরচ</option></select></div><div id="transactions" class="transactions"><div class="empty"><div class="empty-icon">৳</div><strong>লগইন করার পর হিসাব দেখা যাবে</strong><p>আপনার ব্যক্তিগত হিসাব শুধু আপনার অ্যাকাউন্টে থাকবে।</p></div></div></article>
+<aside class="panel quick-panel"><h2>দ্রুত হিসাব যোগ করুন</h2><p class="muted">মাত্র কয়েকটি তথ্য দিলেই হবে।</p><form id="transactionForm"><div class="type-toggle"><button type="button" class="type-btn active" data-type="expense">খরচ</button><button type="button" class="type-btn" data-type="income">আয়</button></div><input id="title" required maxlength="80" placeholder="কিসের হিসাব? যেমন: বাজার" aria-label="হিসাবের নাম"><div class="field-row"><label>পরিমাণ (৳)<input id="amount" required type="number" min="0.01" step="0.01" placeholder="0.00"></label><label>তারিখ<input id="date" required type="date"></label></div><label>বিভাগ<select id="category"><option>খাবার</option><option>যাতায়াত</option><option>বেতন</option><option>বাড়ি</option><option>পড়াশোনা</option><option>বিল</option><option>স্বাস্থ্য</option><option>বিনোদন</option><option>অন্যান্য</option></select></label><label>নোট (ঐচ্ছিক)<textarea id="note" rows="2" maxlength="240" placeholder="অতিরিক্ত কিছু লিখুন..."></textarea></label><button class="primary full" type="submit">＋ হিসাব সংরক্ষণ করুন</button><p class="privacy-note">🔒 আপনার হিসাব লগইন করা অ্যাকাউন্টের অধীনে সংরক্ষিত হবে।</p></form></aside></section>
+<section class="bottom-tools"><div><h2>আপনার ডেটা, আপনার নিয়ন্ত্রণে</h2><p class="muted">ব্যাকআপ ফাইল ডাউনলোড করে নিজের কাছে রাখতে পারবেন।</p></div><button id="backupBtn" class="secondary">↓ ব্যাকআপ ডাউনলোড</button><button id="clearBtn" class="danger-ghost">সব হিসাব মুছুন</button></section>
+<footer>HisabSaathi · ব্যক্তিগত অর্থ ব্যবস্থাপনা <span>Firebase Auth + Cloud Firestore</span></footer></main><div id="toast" class="toast" role="status" aria-live="polite"></div><script type="module" src="app.js"></script>
+</body></html>

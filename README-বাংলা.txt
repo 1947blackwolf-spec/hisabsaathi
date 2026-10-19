@@ -1,25 +1,23 @@
-হিসাব অ্যাপ — প্রাথমিক সংস্করণ
+HisabSaathi — Firebase সংযুক্ত সংস্করণ
 
-এই সংস্করণে যা কাজ করে:
-- ব্যক্তিগত আয় ও খরচ যোগ করা
-- মোট ব্যালেন্স, আয় ও খরচ হিসাব করা
-- লেনদেন খোঁজা ও ধরন অনুযায়ী ফিল্টার
-- লেনদেন মুছে ফেলা
-- JSON ব্যাকআপ ডাউনলোড
-- সমর্থিত ব্রাউজারে PWA অফলাইন ফাইল ক্যাশিং
+ফাইলসমূহ:
+- index.html, styles.css, app.js, manifest.json, service-worker.js
+- firestore.rules (Firebase Console-এ প্রকাশ করতে হবে)
 
-গুরুত্বপূর্ণ সীমাবদ্ধতা:
-- এটি এখনো ক্লাউড-সংযুক্ত নয়।
-- লগইন/অ্যাকাউন্ট ব্যবস্থা এখনো নেই।
-- ডেটা বর্তমান ব্রাউজারের localStorage-এ থাকে। ব্রাউজারের ডেটা মুছে গেলে হিসাব হারাতে পারে; নিয়মিত ব্যাকআপ নিন।
-- এই সংস্করণে একাধিক ব্যবহারকারীর নিরাপদ আলাদা ডেটা সংরক্ষণ বাস্তবায়িত হয়নি।
-- বাস্তব অফলাইন ব্যবহারের জন্য HTTPS-এ হোস্ট করতে হবে; সরাসরি file:// থেকে সব PWA সুবিধা কাজ নাও করতে পারে।
+গুরুত্বপূর্ণ:
+১) Firebase Console > Firestore Database > Rules-এ firestore.rules ফাইলের সম্পূর্ণ কোড বসিয়ে Publish চাপুন।
+২) Firebase Console > Authentication > Sign-in method-এ Email/Password চালু রাখুন।
+৩) Firebase Console > Authentication > Settings > Authorized domains-এ আপনার GitHub Pages domain যোগ করুন (যদি প্রয়োজন হয়)।
+৪) GitHub repository-তে এই প্যাকেজের পাঁচটি অ্যাপ ফাইল root-এ upload করে পুরোনো ফাইল replace করুন। firestore.rules-কে আলাদা ফাইল হিসেবে রাখুন; GitHub-এ রাখলেই Firebase-এ rules প্রকাশ হয় না।
+৫) Settings > General > Your apps থেকে Web app config মিলিয়ে নিন। এই সংস্করণে পূর্বে দেওয়া HisabSaathi Firebase config ব্যবহার করা হয়েছে।
 
-পরবর্তী ধাপ:
-1. ফাইলগুলো GitHub-এ আপলোড করা বা বিনামূল্যের HTTPS হোস্টিং-এ প্রকাশ করা।
-2. Firebase Authentication দিয়ে নিবন্ধন/লগইন যোগ করা।
-3. Firestore Security Rules দিয়ে প্রত্যেক ব্যবহারকারীর ডেটা আলাদা ও সুরক্ষিত করা।
-4. IndexedDB-ভিত্তিক offline queue ও cloud sync যোগ করা।
-5. ক্লাউড-লোকাল দ্বন্দ্ব, লগআউট এবং ব্যাকআপ/পুনরুদ্ধার পরীক্ষা করা।
+সুবিধা:
+- Email/password register, login, logout, password reset
+- প্রত্যেক ব্যবহারকারীর হিসাব users/{uid}/transactions-এ আলাদা রাখা
+- Firestore local cache দিয়ে offline read/write queue সমর্থন (প্রথমবার সাইন ইন/ডেটা লোডের জন্য ইন্টারনেট লাগবে)
+- JSON backup, search, income/expense filter
 
-কোনো গোপন কী বা Firebase admin credentials কখনো পাবলিক ফাইলে রাখবেন না।
+সতর্কতা:
+- এই অ্যাপটি এখনো আপনার Firebase project-এ publish/test করা হয়নি। GitHub upload এবং Firestore Rules publish করার পর পরীক্ষা করুন।
+- Offline কাজ করতে প্রথমে online অবস্থায় একবার login করুন এবং app-টি load হতে দিন।
+- Firebase configuration browser-এ থাকা public client configuration। নিরাপত্তা Firestore Rules এবং Authentication-এর ওপর নির্ভর করে।

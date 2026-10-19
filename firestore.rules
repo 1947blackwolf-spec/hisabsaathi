@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId}/transactions/{transactionId} {
+      allow read, delete: if request.auth != null && request.auth.uid == userId;
+      allow create, update: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.data.keys().hasAll(['title', 'amount', 'type', 'date', 'category', 'note'])
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 80
+        && request.resource.data.amount is number
+        && request.resource.data.amount > 0
+        && request.resource.data.type in ['income', 'expense']
+        && request.resource.data.date is string
+        && request.resource.data.category is string
+        && request.resource.data.note is string;
+    }
+  }
+}
